@@ -27,7 +27,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "amarildotardivo@gmail.com"
-          git config --global user.name "amarildotardivo"
+          git config --global user.name "Amarildo Tardivo"
           git remote add gh-pages https://<amarildotardivo>:${{ secrets.GITHUB_TOKEN }}@github.com/<amarildotardivo>/<calculadora-clt>.git
           git fetch gh-pages || true
 
