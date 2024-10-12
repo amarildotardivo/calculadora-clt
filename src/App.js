@@ -76,7 +76,7 @@ function App() {
     <div className="App">
       <h1>Calculadora de Custo CLT</h1>
       
-      <label htmlFor="salarioLiquido" className="label">Salário Líquido <spam className="required">*</spam>:</label>
+      <label htmlFor="salarioLiquido" className="label">Salário Líquido <span className="required">*</span>:</label>
       <input 
         id="salarioLiquido" 
         type="text" 
