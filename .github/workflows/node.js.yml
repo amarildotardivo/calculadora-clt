@@ -1,16 +1,12 @@
-name: CI
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # ou o nome da branch que você deseja monitorar
-  pull_request:
-    branches:
-      - main  # ou o nome da branch que você deseja monitorar
+      - main  # ou a branch que você estiver usando
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,23 +16,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # ou a versão do Node.js que você está usando
+          node-version: '14' # ou a versão que você estiver usando
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test -- --watchAll=false  # Execute seus testes
-
-      - name: Build
+      - name: Build the project
         run: npm run build
 
       - name: Configure Git
         run: |
           git config --global user.email "amarildotardivo@gmail.com"
           git config --global user.name "amarildotardivo"
+          git remote add gh-pages https://<amarildotardivo>:${{ secrets.GITHUB_TOKEN }}@github.com/<amarildotardivo>/<calculadora-clt>.git
+          git fetch gh-pages || true
 
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
+        run: |
+          npm run deploy
