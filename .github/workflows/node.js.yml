@@ -24,8 +24,13 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "amarildotardivo@gmail.com"
+          git config --global user.name "amarildotardivo"
+
       - name: Deploy to GitHub Pages
         run: |
-          npm install gh-pages --save-dev  # Certifique-se de que gh-pages está instalado
+          npm install gh-pages --save-dev    # Certifique-se de que gh-pages está instalado
           npm run build                      # Execute a construção do projeto, se necessário
           npx gh-pages -d build              # Use npx para executar o gh-pages
